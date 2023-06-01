@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="JoshuaBurt_COMP1011Sec005_LabEx02">
+    <output-path>$PROJECT_DIR$/out/artifacts/JoshuaBurt_COMP1011Sec005_LabEx02</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.example.joshuaburt_comp1011sec005_labex02.CalculatorApplication" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="JoshuaBurt_COMP1011Sec005_LabEx02.jar">
+        <element id="module-output" name="JoshuaBurt_COMP1011Sec005_LabEx02" />
+      </element>
+    </root>
+  </artifact>
+</component>

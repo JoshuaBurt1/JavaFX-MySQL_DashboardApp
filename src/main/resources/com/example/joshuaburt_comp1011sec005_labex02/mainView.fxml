@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane prefHeight="238.0" prefWidth="704.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.MainViewController">
+<tabs>
+    <Tab text="Calculator">
+        <content>
+            <fx:include source="calculator.fxml" fx:id="tabButton1"></fx:include>
+        </content>
+    </Tab>
+    <Tab text="Tip Payment">
+        <content>
+            <fx:include source="tipPayment.fxml" fx:id="tabButton2"></fx:include>
+        </content>
+    </Tab>
+    <Tab text="Car Payment">
+        <content>
+            <fx:include source="carPayment.fxml" fx:id="tabButton3"></fx:include>
+        </content>
+    </Tab>
+    <Tab text="Dental Payment">
+        <content>
+            <fx:include source="dentalPayment.fxml" fx:id="tabButton4"></fx:include>
+        </content>
+    </Tab>
+</tabs>
+</TabPane>
