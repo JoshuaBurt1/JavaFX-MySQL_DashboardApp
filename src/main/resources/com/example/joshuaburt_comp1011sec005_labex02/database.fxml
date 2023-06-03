@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.DatabaseController">
+   <children>
+      <Button fx:id="connectButton" layoutX="258.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#connectButton" text="Connect" />
+      <Label layoutX="243.0" layoutY="29.0" text="Database Viewer" />
+      <Label fx:id="showData" layoutX="275.0" layoutY="296.0" text="Data" />
+      <TableView fx:id="table" layoutX="59.0" layoutY="66.0" prefHeight="200.0" prefWidth="501.0">
+        <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="amount" prefWidth="75.0" text="amount" />
+          <TableColumn fx:id="tipPercent" prefWidth="75.0" text="tipPercent" />
+            <TableColumn fx:id="tipAmount" prefWidth="75.0" text="tipAmount" />
+            <TableColumn fx:id="total" prefWidth="75.0" text="Total" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

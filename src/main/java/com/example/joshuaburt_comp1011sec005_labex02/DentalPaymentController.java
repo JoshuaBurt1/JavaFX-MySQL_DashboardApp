@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -60,6 +63,9 @@ public class DentalPaymentController implements Initializable { //implements ini
     }
     @FXML
     void calculate(/*ActionEvent event*/) { //calculates total
+        String name1 = "'"+name.getText()+"'";
+        String address1 = "'"+address.getText()+"'";
+
         String intermediate = province.getValue();
         double tax = Integer.valueOf(intermediate.replaceAll("\\D+","")); //replaces non-integer characters with ""
         int service = 0;
@@ -82,7 +88,16 @@ public class DentalPaymentController implements Initializable { //implements ini
         else if(radiobutton3.isSelected()){
             discount=1;
         }
-        double totalPayment = (service*(1+tax/100))*discount;
-        calcOutput.setText(String.format(name.getText()+", Total: $%.2f", totalPayment)); //rounds to 2 decimal places
+        double total = (service*(1+tax/100))*discount;
+        calcOutput.setText(String.format(name.getText()+", Total: $%.2f", total)); //rounds to 2 decimal places
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+            Statement statement = connection.createStatement();
+            String sql = String.format("INSERT INTO dental (name, address, tax, discount, service, total) VALUES (%s,%s,%.2f,%.2f,%d,%.2f)",name1, address1, tax, discount, service, total);
+            statement.executeUpdate(sql);
+            System.out.println(total);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

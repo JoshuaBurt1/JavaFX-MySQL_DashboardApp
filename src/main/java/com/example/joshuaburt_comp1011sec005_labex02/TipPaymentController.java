@@ -9,6 +9,10 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TipPaymentController implements Initializable {
@@ -24,18 +28,25 @@ public class TipPaymentController implements Initializable {
     private TextField total;
     double tipX;
 
-    public TipPaymentController() {
-    }
-
     @FXML
-    void calculate() {
-        if (this.amount.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) {
+    public void calculate() {
+        if (this.amount.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) { //matches a real number
             double amountValue = Double.parseDouble(this.amount.getText());
             double sliderValue = this.slider.getValue();
             double tipPaid = amountValue * (sliderValue / 100.0);
             this.tip.setText(String.format("%.2f", tipPaid));
             double totalPaid = amountValue * (1.0 + sliderValue / 100.0);
             this.total.setText(String.format("%.2f", totalPaid));
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+                Statement statement = connection.createStatement();
+                String sql = String.format("INSERT INTO tips (amount, tipPercent, tipAmount, total) VALUES (%.2f,%.2f,%.2f,%.2f)",amountValue,sliderValue,tipPaid,totalPaid);
+                statement.executeUpdate(sql);
+                System.out.println(totalPaid);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         } else {
             throw new IllegalArgumentException("Input must be a number.");
         }
@@ -51,4 +62,14 @@ public class TipPaymentController implements Initializable {
            }
        });
     }
+
+//    public String getAmountValue{
+//        return amountValue.toString();
+//
+//    }
+//    public TipPaymentController(String amountValue, String sliderValue, String tipPaid, String totalPaid){
+//        this.amountValue = amount;
+//
+//
+//    }
 }

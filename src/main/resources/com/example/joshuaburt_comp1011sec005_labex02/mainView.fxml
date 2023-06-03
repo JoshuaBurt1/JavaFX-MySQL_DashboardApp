@@ -28,5 +28,10 @@
             <fx:include source="dentalPayment.fxml" fx:id="tabButton4"></fx:include>
         </content>
     </Tab>
+    <Tab text="Transaction History">
+        <content>
+            <fx:include source="database.fxml" fx:id="tabButton5"></fx:include>
+        </content>
+    </Tab>
 </tabs>
 </TabPane>

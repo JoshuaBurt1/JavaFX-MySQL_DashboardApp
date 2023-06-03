@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -35,11 +38,20 @@ public class CarPaymentController implements Initializable { //implements initia
         double down = Double.parseDouble(txtNum2.getText());
         int length = Integer.parseInt((String) choiceNum3.getValue());
         double interest = Double.parseDouble(txtNum4.getText());
-        double totalPayment = (price-down);
-        for(int i = 0; i < length; i++){
-            totalPayment*=(1+interest/100); // totalPayment should be multiplied interest rate every year
+        double totalPayment = (price - down);
+        for (int i = 0; i < length; i++) {
+            totalPayment *= (1 + interest / 100); // totalPayment should be multiplied interest rate every year
         }
-        double monthPayment = (totalPayment)/12;
+        double monthPayment = (totalPayment) / 12;
         calcOutput.setText(String.format("Total: $%.2f; Monthly: $%.2f", totalPayment, monthPayment)); //rounds to 2 decimal places
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+            Statement statement = connection.createStatement();
+            String sql = String.format("INSERT INTO car (price, down, length, interest, totalPayment) VALUES (%.2f,%.2f,%s,%.2f,%.2f)",price, down, length, interest, totalPayment);
+            statement.executeUpdate(sql);
+            System.out.println(totalPayment);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

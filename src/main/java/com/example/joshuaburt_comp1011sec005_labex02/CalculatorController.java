@@ -5,6 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class CalculatorController {
 
     @FXML
@@ -17,10 +22,22 @@ public class CalculatorController {
     @FXML
     void add(/*ActionEvent event*/) { //format: /*ActionEvent event*/ required for .fxml onMouseClicked to work
         if (txtNum1.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)") && txtNum2.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) { //matches real # only
+            String type = "'add'";
+            System.out.println(type);
             double num1 = Double.parseDouble(txtNum1.getText());
             double num2 = Double.parseDouble(txtNum2.getText());
-            double sum = num1+num2;
-            calcOutput.setText(String.format("%.6f", sum)); //rounds to 6 decimal places
+            double output = num1+num2;
+            calcOutput.setText(String.format("%.6f", output)); //rounds to 6 decimal places
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+                Statement statement = connection.createStatement();
+                String sql = String.format("INSERT INTO calculations (type, variable1, variable2, output) VALUES (%s,%.6f,%.6f,%.6f)",type,num1,num2,output);
+                statement.executeUpdate(sql);
+                System.out.println(output);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         else if (txtNum1.getText().matches("[^0-9]") || txtNum2.getText().matches("[^0-9]")){ //matches not a number
             calcOutput.setText(String.format("")); //removes previous text
@@ -37,10 +54,21 @@ public class CalculatorController {
     @FXML
     void subtract(/*ActionEvent event*/) {
         if (txtNum1.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)") && txtNum2.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) {
+            String type = "'subtract'";
             double num1 = Double.parseDouble(txtNum1.getText());
             double num2 = Double.parseDouble(txtNum2.getText());
-            double sum = num1-num2;
-            calcOutput.setText(String.format("%.6f", sum)); //rounds to 6 decimal places
+            double output = num1-num2;
+            calcOutput.setText(String.format("%.6f", output)); //rounds to 6 decimal places
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+                Statement statement = connection.createStatement();
+                String sql = String.format("INSERT INTO calculations (type, variable1, variable2, output) VALUES (%s,%.6f,%.6f,%.6f)",type,num1,num2,output);
+                statement.executeUpdate(sql);
+                System.out.println(output);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         else if (txtNum1.getText().matches("[^0-9]") || txtNum2.getText().matches("[^0-9]")) {
             calcOutput.setText(String.format(""));
@@ -57,10 +85,21 @@ public class CalculatorController {
     @FXML
     void multiply(/*ActionEvent event*/) {
         if (txtNum1.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)") && txtNum2.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) {
+            String type = "'product'";
             double num1 = Double.parseDouble(txtNum1.getText());
             double num2 = Double.parseDouble(txtNum2.getText());
-            double sum = num1*num2;
-            calcOutput.setText(String.format("%.6f", sum)); //rounds to 6 decimal places
+            double output = num1*num2;
+            calcOutput.setText(String.format("%.6f", output)); //rounds to 6 decimal places
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+                Statement statement = connection.createStatement();
+                String sql = String.format("INSERT INTO calculations (type, variable1, variable2, output) VALUES (%s,%.6f,%.6f,%.6f)",type,num1,num2,output);
+                statement.executeUpdate(sql);
+                System.out.println(output);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         else if (txtNum1.getText().matches("[^0-9]") || txtNum2.getText().matches("[^0-9]")) {
             calcOutput.setText(String.format(""));
@@ -77,10 +116,21 @@ public class CalculatorController {
     @FXML
     void divide(/*ActionEvent event*/) {
         if (txtNum1.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)") && txtNum2.getText().matches("([0-9]+\\.[0-9]*)|([0-9]*\\.[0-9]+)|([0-9]+)")) {
+            String type = "'quotient'";
             double num1 = Double.parseDouble(txtNum1.getText());
             double num2 = Double.parseDouble(txtNum2.getText());
-            double sum = num1/num2;
-            calcOutput.setText(String.format("%.6f", sum)); //rounds to 6 decimal places
+            double output = num1/num2;
+            calcOutput.setText(String.format("%.6f", output)); //rounds to 6 decimal places
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/transactions", "root", "");
+                Statement statement = connection.createStatement();
+                String sql = String.format("INSERT INTO calculations (type, variable1, variable2, output) VALUES (%s,%.6f,%.6f,%.6f)",type,num1,num2,output);
+                statement.executeUpdate(sql);
+                System.out.println(output);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         else if (txtNum1.getText().matches("[^0-9]") || txtNum2.getText().matches("[^0-9]")){
             calcOutput.setText(String.format(""));
