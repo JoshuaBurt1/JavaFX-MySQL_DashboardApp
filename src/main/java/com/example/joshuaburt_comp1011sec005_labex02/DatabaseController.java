@@ -8,6 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -30,14 +34,20 @@ public class DatabaseController implements Initializable {
     private TableView table;
     @FXML
     private ComboBox<String> tableNames;
+    @FXML
+    private LineChart<?, ?> lineChart;
+    @FXML
+    private NumberAxis dependentV; //NumberAxis = continuous data ie. double values
+    @FXML
+    private CategoryAxis independentV; //CategoryAxis = preset discrete string values ie. 1,2,3...
     String databaseName = "transactions";
 
     //1.  In database.sql.fxml --> get ComboBox current value
     @Override
     public void initialize(URL location, ResourceBundle resources) { //runs on application initialization
-        //TODO: select databases in MySQL: SHOW DATABASES;
+        //TODO: select databases in MySQL: SHOW DATABASES (instead of hardcoded databaseName)
         try {
-            //Connect to SQL database.sql
+            //Connect to MySQL database.sql
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/" + databaseName, "root", "");
             Statement statement = connection.createStatement();
 
@@ -51,6 +61,7 @@ public class DatabaseController implements Initializable {
             }
             System.out.println(tables);
             tableNames.setItems(tables);
+
             //insert placeholder into .fxml TableView
             table.setPlaceholder(
                     new Label("No rows to display"));
@@ -65,6 +76,8 @@ public class DatabaseController implements Initializable {
         //clear all previous data from TableView table before next population
         table.getItems().clear();
         table.getColumns().clear();
+        //clear all previous data from LineChart chart before next population
+        lineChart.getData().clear();
         //Connect to SQL database.sql
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/"+databaseName, "root", "");
@@ -145,6 +158,27 @@ public class DatabaseController implements Initializable {
                     table.getItems().add(new CalculatorController.CalculationsLog(columnContents.get(0).get(i).toString(), columnContents.get(1).get(i).toString(), columnContents.get(2).get(i).toString(), columnContents.get(3).get(i).toString(), columnContents.get(4).get(i).toString()));
                 }
             }
+
+            //Line chart
+            //TODO: Add choice or combo box to select axes
+            independentV.setLabel(columnNames.get(0)); //x-axis = first column, discrete data ie. (ID);
+            System.out.println(columnNames.get(0));
+            dependentV.setLabel(columnNames.get(columns-1)); //y-axis = last column, continuous data ie. (total)
+            System.out.println(columnNames.get(columns-1));
+            lineChart.setTitle(tableNames.getSelectionModel().getSelectedItem()); //table title
+            System.out.println(tableNames.getSelectionModel().getSelectedItem());
+            lineChart.setLegendVisible(false); //sets legend of line to invisible
+            lineChart.setAnimated(false); //needed to set axis correctly
+
+            XYChart.Series series = new XYChart.Series();
+            //series.setName("test data"); //if you wanted the line to have a name
+
+            //create data points
+            for (int i = 0; i<columnContents.get(0).size(); i++){ // to start x-axis from origin use: String.valueOf(i)
+                series.getData().add(new XYChart.Data(String.valueOf(columnContents.get(0).get(i)),Double.valueOf((String)columnContents.get(columns-1).get(i))));
+            }
+            lineChart.getData().addAll(series); //add series data to linechart
+
         }
         catch (Exception e){
             e.printStackTrace();
