@@ -63,13 +63,54 @@ public class TipPaymentController implements Initializable {
        });
     }
 
-//    public String getAmountValue{
-//        return amountValue.toString();
-//
-//    }
-//    public TipPaymentController(String amountValue, String sliderValue, String tipPaid, String totalPaid){
-//        this.amountValue = amount;
-//
-//
-//    }
+    //Required to add data to TableView in Database Controller & database.fxml
+    public static class TipLog {
+        private Integer id = null;
+        private Double amount = null;
+        private Double tipPercent = null;
+        private Double tipAmount = null;
+        private Double total = null;
+
+        public TipLog() {
+        }
+
+        public TipLog(Integer id, Double amount, Double tipPercent, Double tipAmount, Double total) {
+            this.id = id;
+            this.amount = amount;
+            this.tipPercent = tipPercent;
+            this.tipAmount = tipAmount;
+            this.total = total;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+        public void setId(Integer id) {
+            this.id = id;
+        }
+        public Double getAmount() {
+            return amount;
+        }
+        public void setAmount(Double amount) {
+            this.amount = amount;
+        }
+        public Double getTipPercent() {
+            return tipPercent;
+        }
+        public void setTipPercent(Double tipPercent) {
+            this.tipPercent = tipPercent;
+        }
+        public Double getTipAmount() {
+            return tipAmount;
+        }
+        public void setTipAmount(Double tipAmount) {
+            this.tipAmount = tipAmount;
+        }
+        public Double getTotal() {
+            return total;
+        }
+        public void setTotal(Double total) {
+            this.total = total;
+        }
+    }
 }
