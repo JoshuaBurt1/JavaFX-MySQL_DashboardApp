@@ -100,4 +100,83 @@ public class DentalPaymentController implements Initializable { //implements ini
             e.printStackTrace();
         }
     }
+    //Required to add data to TableView in Database Controller & database.fxml
+    public static class DentalLog {
+        private String id = null;
+        private String name = null;
+        private String address = null;
+        private String tax = null;
+        private String discount = null;
+        private String service = null;
+        private String total = null;
+
+        public DentalLog() {
+        }
+
+        public DentalLog(String id, String name, String address, String tax, String discount, String service, String total) {
+            this.id = id;
+            this.name = name;
+            this.address = address;
+            this.tax = tax;
+            this.discount = discount;
+            this.service = service;
+            this.total = total;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getTax() {
+            return tax;
+        }
+
+        public void setTax(String tax) {
+            this.tax = tax;
+        }
+
+        public String getDiscount() {
+            return discount;
+        }
+
+        public void setDiscount(String discount) {
+            this.discount = discount;
+        }
+
+        public String getService() {
+            return service;
+        }
+
+        public void setService(String service) {
+            this.service = service;
+        }
+
+        public String getTotal() {
+            return total;
+        }
+
+        public void setTotal(String total) {
+            this.total = total;
+        }
+    }
 }

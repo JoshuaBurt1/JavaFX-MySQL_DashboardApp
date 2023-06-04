@@ -54,4 +54,71 @@ public class CarPaymentController implements Initializable { //implements initia
             e.printStackTrace();
         }
     }
+    //Required to add data to TableView in Database Controller & database.fxml
+    public static class CarLog {
+        private String id = null;
+        private String price = null;
+        private String down = null;
+        private String length = null;
+        private String interest = null;
+        private String totalPayment = null;
+
+        public CarLog() {
+        }
+
+        public CarLog(String id, String price, String down, String length, String interest, String totalPayment) {
+            this.id = id;
+            this.price = price;
+            this.down = down;
+            this.length = length;
+            this.interest = interest;
+            this.totalPayment = totalPayment;
+        }
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
+        public String getDown() {
+            return down;
+        }
+
+        public void setDown(String down) {
+            this.down = down;
+        }
+
+        public String getLength() {
+            return length;
+        }
+
+        public void setLength(String length) {
+            this.length = length;
+        }
+
+        public String getInterest() {
+            return interest;
+        }
+
+        public void setInterest(String interest) {
+            this.interest = interest;
+        }
+
+        public String getTotalPayment() {
+            return totalPayment;
+        }
+
+        public void setTotalPayment(String totalPayment) {
+            this.totalPayment = totalPayment;
+        }
+    }
 }

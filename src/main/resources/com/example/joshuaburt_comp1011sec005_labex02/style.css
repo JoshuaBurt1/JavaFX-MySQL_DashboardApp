@@ -1,0 +1,17 @@
+#anchorT{
+    /*-fx-font-size: 18pt;
+    -fx-font-family: "Times New Roman";*/
+    -fx-background-color: #CCE6FF
+}
+#anchorCalc{
+    -fx-background-color: #E3CCFF
+}
+#anchorTip{
+    -fx-background-color: #CCFFF1
+}
+#anchorCar{
+    -fx-background-color: #FBB292
+}
+#anchorD{
+    -fx-background-color: #FCCDE5
+}

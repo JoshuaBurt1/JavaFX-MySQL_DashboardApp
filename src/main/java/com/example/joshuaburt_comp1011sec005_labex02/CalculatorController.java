@@ -144,4 +144,64 @@ public class CalculatorController {
     public double testDivide(double num1, double num2) { //format: public --> accessed by CalculatorControllerTest; double --> returns a double value
         return num1/num2; //required for tests;
     }
+
+    //Required to add data to TableView in Database Controller & database.fxml
+    public static class CalculationsLog {
+        private String id = null;
+        private String type = null;
+        private String variable1 = null;
+        private String variable2 = null;
+        private String output = null;
+
+        public CalculationsLog() {
+        }
+
+        public CalculationsLog(String id, String type, String variable1, String variable2, String output) {
+            this.id = id;
+            this.type = type;
+            this.variable1 = variable1;
+            this.variable2 = variable2;
+            this.output = output;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getVariable1() {
+            return variable1;
+        }
+
+        public void setVariable1(String variable1) {
+            this.variable1 = variable1;
+        }
+
+        public String getVariable2() {
+            return variable2;
+        }
+
+        public void setVariable2(String variable2) {
+            this.variable2 = variable2;
+        }
+
+        public String getOutput() {
+            return output;
+        }
+
+        public void setOutput(String output) {
+            this.output = output;
+        }
+    }
 }

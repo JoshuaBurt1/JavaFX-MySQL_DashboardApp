@@ -65,16 +65,16 @@ public class TipPaymentController implements Initializable {
 
     //Required to add data to TableView in Database Controller & database.fxml
     public static class TipLog {
-        private Integer id = null;
-        private Double amount = null;
-        private Double tipPercent = null;
-        private Double tipAmount = null;
-        private Double total = null;
+        private String id = null;
+        private String amount = null;
+        private String tipPercent = null;
+        private String tipAmount = null;
+        private String total = null;
 
         public TipLog() {
         }
 
-        public TipLog(Integer id, Double amount, Double tipPercent, Double tipAmount, Double total) {
+        public TipLog(String id, String amount, String tipPercent, String tipAmount, String total) {
             this.id = id;
             this.amount = amount;
             this.tipPercent = tipPercent;
@@ -82,34 +82,34 @@ public class TipPaymentController implements Initializable {
             this.total = total;
         }
 
-        public Integer getId() {
+        public String getId() {
             return id;
         }
-        public void setId(Integer id) {
+        public void setId(String id) {
             this.id = id;
         }
-        public Double getAmount() {
+        public String getAmount() {
             return amount;
         }
-        public void setAmount(Double amount) {
+        public void setAmount(String amount) {
             this.amount = amount;
         }
-        public Double getTipPercent() {
+        public String getTipPercent() {
             return tipPercent;
         }
-        public void setTipPercent(Double tipPercent) {
+        public void setTipPercent(String tipPercent) {
             this.tipPercent = tipPercent;
         }
-        public Double getTipAmount() {
+        public String getTipAmount() {
             return tipAmount;
         }
-        public void setTipAmount(Double tipAmount) {
+        public void setTipAmount(String tipAmount) {
             this.tipAmount = tipAmount;
         }
-        public Double getTotal() {
+        public String getTotal() {
             return total;
         }
-        public void setTotal(Double total) {
+        public void setTotal(String total) {
             this.total = total;
         }
     }

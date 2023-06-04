@@ -6,11 +6,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.DatabaseController">
+<AnchorPane id="anchorT" prefHeight="400.0" prefWidth="781.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.DatabaseController">
    <children>
       <Button fx:id="connectButton" layoutX="516.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#connectButton" text="Connect" />
       <Label layoutX="59.0" layoutY="38.0" text="Table Viewer" />
-      <TableView fx:id="table" layoutX="59.0" layoutY="66.0" prefHeight="200.0" prefWidth="422.0" />
+      <TableView fx:id="table" layoutX="59.0" layoutY="66.0" prefHeight="200.0" prefWidth="427.0" />
       <ComboBox fx:id="tableNames" layoutX="514.0" layoutY="66.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="514.0" layoutY="38.0" text="Select Table" />
    </children>
