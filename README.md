@@ -15,4 +15,5 @@
 -	install library (platform independent): https://dev.mysql.com/downloads/connector/j/
 -	start Project  right click root project folder  New  Directory name: “lib”  place downloaded .jar file in “lib” ie. mysql-connector-j-8.0.33
 -	Add library to Project structure: File  Project Structure  Modules  Dependencies  + symbol  Select JAR  add .jar file that was added to lib  Apply  Okay
-2. Enter previously copied SQL Details into Java code as required: path, database, user, password table, colum
+2. Enter previously copied SQL Details into Java code as required: path, database, user, password table, column
+3. Run project
