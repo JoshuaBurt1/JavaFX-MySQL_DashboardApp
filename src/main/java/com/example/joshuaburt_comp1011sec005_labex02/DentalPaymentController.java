@@ -110,9 +110,6 @@ public class DentalPaymentController implements Initializable { //implements ini
         private String service = null;
         private String total = null;
 
-        public DentalLog() {
-        }
-
         public DentalLog(String id, String name, String address, String tax, String discount, String service, String total) {
             this.id = id;
             this.name = name;

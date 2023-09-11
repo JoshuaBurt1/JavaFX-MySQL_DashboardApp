@@ -63,8 +63,6 @@ public class CarPaymentController implements Initializable { //implements initia
         private String interest = null;
         private String totalPayment = null;
 
-        public CarLog() {
-        }
 
         public CarLog(String id, String price, String down, String length, String interest, String totalPayment) {
             this.id = id;

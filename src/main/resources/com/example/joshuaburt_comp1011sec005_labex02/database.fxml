@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="anchorT" prefHeight="492.0" prefWidth="840.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.DatabaseController">
+<AnchorPane id="anchorT" prefHeight="492.0" prefWidth="840.0" stylesheets="@../../../../../../../JoshuaBurt_COMP1011Sec005_LabEx03/src/main/resources/joshuaburt_sec005_ex04/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.DatabaseController">
    <children>
       <Button fx:id="connectButton" layoutX="374.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#connectButton" text="Connect" />
       <Label layoutX="30.0" layoutY="205.0" text="Table View" />

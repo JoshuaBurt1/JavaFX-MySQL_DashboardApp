@@ -8,28 +8,24 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.*;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.ArrayList;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class DatabaseController implements Initializable {
-
     @FXML
     private TableView table;
     @FXML
@@ -41,7 +37,6 @@ public class DatabaseController implements Initializable {
     @FXML
     private CategoryAxis independentV; //CategoryAxis = preset discrete string values ie. 1,2,3...
     String databaseName = "transactions";
-
     //1.  In database.sql.fxml --> get ComboBox current value
     @Override
     public void initialize(URL location, ResourceBundle resources) { //runs on application initialization
@@ -178,6 +173,9 @@ public class DatabaseController implements Initializable {
                 series.getData().add(new XYChart.Data(String.valueOf(columnContents.get(0).get(i)),Double.valueOf((String)columnContents.get(columns-1).get(i))));
             }
             lineChart.getData().addAll(series); //add series data to linechart
+
+            //TODO: add statistics below table and chart ie. variance, standard deviation, rate of change
+            //TODO: add this data to a global variable (Array), store the data in another database or table
 
         }
         catch (Exception e){

@@ -153,9 +153,6 @@ public class CalculatorController {
         private String variable2 = null;
         private String output = null;
 
-        public CalculationsLog() {
-        }
-
         public CalculationsLog(String id, String type, String variable1, String variable2, String output) {
             this.id = id;
             this.type = type;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorCalc" prefHeight="238.0" prefWidth="704.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.CalculatorController">
+<AnchorPane id="anchorCalc" prefHeight="238.0" prefWidth="704.0" stylesheets="@../../../../../../../JoshuaBurt_COMP1011Sec005_LabEx03/src/main/resources/joshuaburt_sec005_ex04/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.joshuaburt_comp1011sec005_labex02.CalculatorController">
     <children>
           <Label alignment="CENTER" layoutX="317.0" layoutY="8.0" prefHeight="42.0" prefWidth="202.0" text="Simple Calculator">
               <font>

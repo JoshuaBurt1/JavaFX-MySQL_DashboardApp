@@ -71,9 +71,6 @@ public class TipPaymentController implements Initializable {
         private String tipAmount = null;
         private String total = null;
 
-        public TipLog() {
-        }
-
         public TipLog(String id, String amount, String tipPercent, String tipAmount, String total) {
             this.id = id;
             this.amount = amount;
